@@ -5,19 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "myform_db";
-
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli("localhost", "root", "root", "myform_db");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -40,10 +35,18 @@
                 <!-- output data of each row -->
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
-                        <td><?php echo $row["firstname"] . " " . $row["lastname"]; ?></td>
-                        <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo $row["dob"]; ?></td>
-                        <td><?php echo $row["gender"]; ?></td>
+                        <td>
+                            <?php echo $row["firstname"] . " " . $row["lastname"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["email"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["dob"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["gender"]; ?>
+                        </td>
                     </tr>
                 <?php } ?>
             </table>
